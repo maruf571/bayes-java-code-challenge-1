@@ -1,8 +1,6 @@
 package gg.bayes.challenge.service.impl;
 
-import gg.bayes.challenge.entity.HeroDamage;
-import gg.bayes.challenge.entity.HeroKill;
-import gg.bayes.challenge.entity.Match;
+import gg.bayes.challenge.entity.*;
 import gg.bayes.challenge.exception.DotaException;
 import gg.bayes.challenge.repository.*;
 import gg.bayes.challenge.rest.model.HeroDamages;
@@ -33,7 +31,7 @@ public class MatchServiceImpl implements MatchService {
     private final CastProcessor castProcessor;
     private final HitProcessor hitProcessor;
     private final KillProcessor killProcessor;
-    private final UsesProcessor usesProcessor;
+    private final EndProcessor endProcessor;
     private final MatchRepository matchRepository;
 
     private final HeroKillRepository heroKillRepository;
@@ -44,10 +42,10 @@ public class MatchServiceImpl implements MatchService {
     @PostConstruct
     public void init() {
         this.logProcessor = buyProcessor;   // set first one
-        logProcessor.setNext(castProcessor) // create chain
+        buyProcessor.setNext(castProcessor) // create chain
                 .setNext(hitProcessor)
                 .setNext(killProcessor)
-                .setNext(usesProcessor);
+                .setNext(endProcessor);
     }
 
     @Override
@@ -65,6 +63,8 @@ public class MatchServiceImpl implements MatchService {
              log.error("Error on reading payload");
              throw new DotaException("Error while reading payload", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        logProcessor.save();
+
         long end = System.currentTimeMillis();
         log.info("{} ms is taken to parse the log file.", (end - start));
 

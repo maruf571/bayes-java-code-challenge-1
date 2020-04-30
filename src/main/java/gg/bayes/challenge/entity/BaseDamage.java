@@ -8,8 +8,7 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Entity
-public class HeroSpell {
-
+public class BaseDamage {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,7 +18,9 @@ public class HeroSpell {
 
     private String hero;
 
-    private String spell;
+    private String target;
+
+    private Integer damage;
 
     private Integer timestamp;
 }

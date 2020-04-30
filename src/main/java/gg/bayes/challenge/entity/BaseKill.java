@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Table
 @Entity
-public class HeroKill {
+public class BaseKill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
