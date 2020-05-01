@@ -7,6 +7,7 @@ import gg.bayes.challenge.rest.model.HeroSpells;
 import gg.bayes.challenge.service.MatchService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,16 +17,16 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/match")
+@RequestMapping(MatchController.URL)
 @RequiredArgsConstructor
 public class MatchController {
-
+    static final String URL = "/api/match";
     private final MatchService matchService;
 
     @PostMapping(consumes = "text/plain")
     public ResponseEntity<Long> ingestMatch(@RequestBody @NotNull @NotBlank String payload) {
         final Long matchId = matchService.ingestMatch(payload);
-        return ResponseEntity.ok(matchId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(matchId);
     }
 
     @GetMapping("{matchId}")

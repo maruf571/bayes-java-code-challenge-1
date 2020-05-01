@@ -11,7 +11,7 @@ public interface HeroKillRepository extends JpaRepository<HeroKill, Long> {
 
     @Query( "SELECT new gg.bayes.challenge.rest.model.HeroKills(k.hero, count(k)) " +
             "FROM HeroKill k " +
-            "where k.match.id = ?1 group by k.hero ")
+            "where k.match.id = ?1 group by k.hero order by k.hero")
     List<HeroKills> getHeroKills(Long matchId);
 
 }

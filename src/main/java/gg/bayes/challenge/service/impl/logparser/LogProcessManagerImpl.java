@@ -1,6 +1,7 @@
 package gg.bayes.challenge.service.impl.logparser;
 
 import gg.bayes.challenge.entity.Match;
+import gg.bayes.challenge.service.LogProcessManager;
 import gg.bayes.challenge.service.LogProcessor;
 import gg.bayes.challenge.service.impl.logparser.HeroBuyItemProcessor;
 import gg.bayes.challenge.service.impl.logparser.HeroDamageProcessor;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class LogProcessManagerImpl {
+public class LogProcessManagerImpl implements LogProcessManager {
 
     private final List<LogProcessor> logProcessorList = new ArrayList<>();
     private final HeroBuyItemProcessor heroBuyItemProcessor;
@@ -24,19 +25,21 @@ public class LogProcessManagerImpl {
     private final HeroSpellProcessor heroSpellProcessor;
 
     @PostConstruct
-    public void prepareChain() {
+    public void prepareProcessorList() {
         logProcessorList.add(heroBuyItemProcessor);
         logProcessorList.add(heroDamageProcessor);
         logProcessorList.add(heroKillProcessor);
         logProcessorList.add(heroSpellProcessor);
     }
 
-    public void parseLine(String line, Match match) {
+    @Override
+    public void parse(String line, Match match) {
         for(LogProcessor parser : logProcessorList) {
             parser.parse(line, match);
         }
     }
 
+    @Override
     public void save() {
         for(LogProcessor lp : logProcessorList) {
             lp.save();

@@ -24,6 +24,9 @@ http://localhost:2020/swagger-ui.html
 - call rest api
 ```
 http://localhost:2020/api/match
-
 ```
 
+- h2 console
+````
+http://localhost:2020/h2-console/
+````

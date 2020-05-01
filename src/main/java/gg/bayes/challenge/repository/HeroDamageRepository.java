@@ -11,6 +11,7 @@ public interface HeroDamageRepository extends JpaRepository<HeroDamage, Long> {
 
     @Query("select new gg.bayes.challenge.rest.model.HeroDamages(hd.target, count(hd) , sum(hd.damage)  ) " +
             "from HeroDamage as hd " +
-            "where hd.match.id = ?1 and hd.hero=?2 group by hd.target ")
+            "where hd.match.id = ?1 and hd.hero=?2 group by hd.target order by hd.target " +
+            "")
     List<HeroDamages> damage(Long matchId, String heroName);
 }
