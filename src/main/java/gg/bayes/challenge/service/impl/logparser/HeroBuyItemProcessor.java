@@ -40,7 +40,7 @@ public class HeroBuyItemProcessor implements LogProcessor {
             heroBuyItem.setMatch(match);
             heroBuyItem.setHero(matcher.group(HERO_GROUP));
             heroBuyItem.setItem(matcher.group(ITEM_GROUP));
-            heroBuyItem.setTimestamp((long) LocalTime.parse(matcher.group(TIME_GROUP)).get(ChronoField.MILLI_OF_DAY));
+            heroBuyItem.setTimestamp(LocalTime.parse(matcher.group(TIME_GROUP)).get(ChronoField.MILLI_OF_DAY));
             heroBuyItemList.add(heroBuyItem);
         }
     }

@@ -1,12 +1,8 @@
 package gg.bayes.challenge.service.impl.logparser;
 
 import gg.bayes.challenge.entity.Match;
-import gg.bayes.challenge.service.LogProcessManager;
+import gg.bayes.challenge.service.LogProcessorManager;
 import gg.bayes.challenge.service.LogProcessor;
-import gg.bayes.challenge.service.impl.logparser.HeroBuyItemProcessor;
-import gg.bayes.challenge.service.impl.logparser.HeroDamageProcessor;
-import gg.bayes.challenge.service.impl.logparser.HeroKillProcessor;
-import gg.bayes.challenge.service.impl.logparser.HeroSpellProcessor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +12,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class LogProcessManagerImpl implements LogProcessManager {
+public class LogProcessorManagerImpl implements LogProcessorManager {
 
     private final List<LogProcessor> logProcessorList = new ArrayList<>();
     private final HeroBuyItemProcessor heroBuyItemProcessor;

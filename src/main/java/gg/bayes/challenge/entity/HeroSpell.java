@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Entity
-public class HeroSpell implements HeroActivity {
+public class HeroSpell {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

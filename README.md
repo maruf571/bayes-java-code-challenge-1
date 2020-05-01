@@ -1,9 +1,22 @@
 bayes-dota
 ==========
+Dota2 match logfile processor to get the specific data using rest api. 
 
-This is the [task](TASK.md).
 
-Any additional information about your solution goes here.
+### 
+Based on the task description, I have found the pattern. Created four processors. 
+- HeroBuyItemProcessor
+- HeroDamageProcessor
+- HeroKillProcessor
+- HeroSpellProcessor
+
+### Solution path:
+1. Split the payload by line
+2. LogProcessManager pass each line to each processor
+3. If line matched with the processor regex, processor process the line and store it on the list
+4. After parse is done, LogProcessManager save the data from list to database.
+
+
 
 ## Dev environment
 - run server

@@ -7,7 +7,7 @@ import gg.bayes.challenge.rest.model.HeroDamages;
 import gg.bayes.challenge.rest.model.HeroItems;
 import gg.bayes.challenge.rest.model.HeroKills;
 import gg.bayes.challenge.rest.model.HeroSpells;
-import gg.bayes.challenge.service.LogProcessManager;
+import gg.bayes.challenge.service.LogProcessorManager;
 import gg.bayes.challenge.service.MatchService;
 import gg.bayes.challenge.service.MatchValidation;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +31,7 @@ public class MatchServiceImpl implements MatchService {
     private final HeroSpellRepository heroSpellRepository;
     private final HeroDamageRepository heroDamageRepository;
     private final MatchValidation matchValidation;
-    private final LogProcessManager logProcessManager;
+    private final LogProcessorManager logProcessorManager;
 
     @Override
     public List<HeroKills> getMatch(Long matchId) {
@@ -76,7 +76,7 @@ public class MatchServiceImpl implements MatchService {
         try (BufferedReader reader = new BufferedReader(new StringReader(payload))) {
             String line = reader.readLine();
             while (line != null) {
-                logProcessManager.parse(line, match);
+                logProcessorManager.parse(line, match);
                 line = reader.readLine();
             }
         } catch (IOException exc) {
@@ -86,6 +86,6 @@ public class MatchServiceImpl implements MatchService {
     }
 
     private void saveHeroActivity() {
-        logProcessManager.save();
+        logProcessorManager.save();
     }
 }

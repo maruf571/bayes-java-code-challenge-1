@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Table
 @Entity
-public class HeroKill implements HeroActivity {
+public class HeroKill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

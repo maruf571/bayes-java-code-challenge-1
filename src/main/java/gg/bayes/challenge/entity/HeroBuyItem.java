@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Entity
-public class HeroBuyItem implements HeroActivity {
+public class HeroBuyItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,5 +21,5 @@ public class HeroBuyItem implements HeroActivity {
 
     private String item;
 
-    private Long timestamp;
+    private Integer timestamp;
 }
