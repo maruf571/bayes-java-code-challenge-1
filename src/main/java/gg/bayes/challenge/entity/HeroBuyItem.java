@@ -7,9 +7,8 @@ import javax.persistence.*;
 
 @Setter
 @Getter
-@Table
 @Entity
-public class BaseKill {
+public class HeroBuyItem implements HeroActivity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,7 +19,7 @@ public class BaseKill {
 
     private String hero;
 
-    private String target;
+    private String item;
 
-    private Integer timestamp;
+    private Long timestamp;
 }

@@ -1,9 +1,9 @@
-package gg.bayes.challenge.service;
+package gg.bayes.challenge.service.logprocessor;
 
-import gg.bayes.challenge.entity.BaseDamage;
+import gg.bayes.challenge.entity.HeroDamage;
+import gg.bayes.challenge.entity.HeroSpell;
 import gg.bayes.challenge.entity.Match;
-import gg.bayes.challenge.service.impl.EndProcessor;
-import gg.bayes.challenge.service.impl.HitProcessor;
+import gg.bayes.challenge.service.impl.logparser.HeroDamageProcessor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,10 +14,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-public class HitProcessorTest {
+public class HeroDamageProcessorTest {
 
     @InjectMocks
-    private HitProcessor hitProcessor;
+    private HeroDamageProcessor damageProcessor;
 
     @Test
     public void should_process_spell_cast() {
@@ -26,13 +26,10 @@ public class HitProcessorTest {
         String line = "[00:25:05.520] npc_dota_hero_pangolier hits npc_dota_hero_death_prophet with pangolier_gyroshell for 148 damage (1380->1232)";
 
         // When
-        boolean res = hitProcessor.process(line, new Match(2L));
-        List<BaseDamage> list = hitProcessor.heroDamages;
+        damageProcessor.parse(line, new Match(123L));
+        List<HeroDamage> list = damageProcessor.getHeroDamageList();
 
         // Then
-        assertTrue(res);
-        assertEquals(1, list.size());
-        assertEquals(2, list.get(0).getMatch().getId());
         assertEquals("pangolier", list.get(0).getHero());
         assertEquals("death_prophet", list.get(0).getTarget());
         assertEquals(148, list.get(0).getDamage());
@@ -46,12 +43,10 @@ public class HitProcessorTest {
         String line = "[00:37:22.283] npc_dota_hero_mars buys item item_ogre_axe";
 
         // When
-        hitProcessor.next = new EndProcessor();
-        boolean res = hitProcessor.process(line, new Match(2L));
-        List<BaseDamage> list = hitProcessor.getHeroDamages();
+        damageProcessor.parse(line, new Match(123L));
+        List<HeroDamage> list = damageProcessor.getHeroDamageList();
 
         // Then
-        assertFalse(res);
         assertEquals(0, list.size());
     }
 }

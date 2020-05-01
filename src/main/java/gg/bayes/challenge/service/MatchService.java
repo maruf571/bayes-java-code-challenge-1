@@ -13,9 +13,9 @@ public interface MatchService {
 
     List<HeroKills> getMatch(Long matchId);
 
-    List<HeroItems> getItems(Long matchId, String heroName);
+    List<HeroItems> getHeroItems(Long matchId, String heroName);
 
-    List<HeroSpells> getSpells(Long matchId, String heroName);
+    List<HeroSpells> getHeroSpells(Long matchId, String heroName);
 
-    List<HeroDamages> getDamage(Long matchId, String heroName);
+    List<HeroDamages> getHeroDamage(Long matchId, String heroName);
 }
