@@ -2,7 +2,7 @@ package gg.bayes.challenge.service.logprocessor;
 
 import gg.bayes.challenge.entity.HeroBuyItem;
 import gg.bayes.challenge.entity.Match;
-import gg.bayes.challenge.service.impl.logparser.HeroBuyItemProcessor;
+import gg.bayes.challenge.service.impl.logprocessor.HeroBuyItemProcessor;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;

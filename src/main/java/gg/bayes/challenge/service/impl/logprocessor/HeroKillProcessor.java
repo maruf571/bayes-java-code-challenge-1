@@ -1,4 +1,4 @@
-package gg.bayes.challenge.service.impl.logparser;
+package gg.bayes.challenge.service.impl.logprocessor;
 
 import gg.bayes.challenge.entity.HeroKill;
 import gg.bayes.challenge.entity.Match;

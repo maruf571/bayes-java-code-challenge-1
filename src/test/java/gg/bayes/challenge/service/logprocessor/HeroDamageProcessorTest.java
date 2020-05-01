@@ -1,9 +1,8 @@
 package gg.bayes.challenge.service.logprocessor;
 
 import gg.bayes.challenge.entity.HeroDamage;
-import gg.bayes.challenge.entity.HeroSpell;
 import gg.bayes.challenge.entity.Match;
-import gg.bayes.challenge.service.impl.logparser.HeroDamageProcessor;
+import gg.bayes.challenge.service.impl.logprocessor.HeroDamageProcessor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

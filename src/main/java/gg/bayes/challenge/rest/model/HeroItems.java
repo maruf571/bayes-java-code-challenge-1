@@ -9,5 +9,5 @@ public class HeroItems {
 
     private String item;
 
-    private Long timestamp;
+    private Integer timestamp;
 }

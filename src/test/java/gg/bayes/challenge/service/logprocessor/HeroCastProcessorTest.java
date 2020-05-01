@@ -2,7 +2,7 @@ package gg.bayes.challenge.service.logprocessor;
 
 import gg.bayes.challenge.entity.HeroSpell;
 import gg.bayes.challenge.entity.Match;
-import gg.bayes.challenge.service.impl.logparser.HeroSpellProcessor;
+import gg.bayes.challenge.service.impl.logprocessor.HeroSpellProcessor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
