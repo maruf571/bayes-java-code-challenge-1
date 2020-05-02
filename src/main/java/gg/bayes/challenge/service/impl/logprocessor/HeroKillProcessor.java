@@ -23,7 +23,7 @@ public class HeroKillProcessor implements LogProcessor {
 
     @Getter
     private final List<HeroKill> heroKillList = new ArrayList<>();
-    protected static final Pattern pattern = Pattern.compile("\\[(.*)]\\s+npc_dota_hero_(.*)\\s+is+\\s+killed\\s+by\\s+npc_dota_hero_(.*)");
+    protected static final Pattern pattern = Pattern.compile("\\[(.*)]\\snpc_dota_hero_(.*)\\sis\\skilled\\sby\\snpc_dota_hero_(.*)");
     private static final int TIME_GROUP = 1;
     private static final int HERO_TARGET_GROUP = 2;
     private static final int HERO_GROUP = 3;

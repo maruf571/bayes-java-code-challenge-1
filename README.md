@@ -1,17 +1,15 @@
 bayes-dota
 ==========
 This is an assignment project. Implemented code would be a nice example of process small
-log file. There are two parts of this project 
-1. process log file and save data to database 
-2. using rest api to get back the important data 
+log file, create necessary data from log and expose them in a rest api call.   
 
 ### Solution path
-1. Split the payload by lin(so logfile must be separated with new line)
-2. LogProcessManager pass each line to each processor
-3. If pattern match with the processor regex, processor process the line and store it on the list
-4. After parse is done, LogProcessManager save the data from list to database.
-5. Java Pattern and Matcher is used to find out the pattern on the specific line.
-6. H2 database is used to store the processed data.
+1. Split the payload line by line(so logfile must be separated with new line)
+2. LogProcessManager pass each line to the processors. 
+3. If processor's pattern match with line, processor will process the line, create entity and store on list
+4. After processing, LogProcessManager call save to store data from list to database.
+5. Java Pattern and Matcher used to find out the pattern on the specific line.
+6. H2 database used to store the processed data.
 
 
 ##  Design Decisions 
@@ -23,17 +21,19 @@ and created following processors to process specific data.
 - HeroSpellProcessor
 
 ### How to add new data from log (if we want to add in future) 
-If we want to add new data from the logfile, we have to add a new processor on the LogProcessorManager.
-We may need to create a new table and repository.   
-
+- create a new processor ex. FutureProcessor
+- add FutureProcessor on the log processor list 
 
 ### Modules/class Introduction
-- logprocessor: package related to the log processor class   
+- entity: package related to database entity/data model
+- repository: package related to spring data jpa repository to write necessary query to fetch data.
+- logprocessor: package related to the log processor classes   
+- exception: package related to exception handling classes
 - MatchValidation: class to validate service input those need database to validate.
 - LogProcessorManager: main interface to process log.  
 - MatchControllerIT: integration test 
 
-## new dependency 
+## New dependency 
 - added maven-surefire-plugin to run unit test and integration test separately.
 ```
 <plugin>
@@ -66,7 +66,7 @@ http://localhost:2020/swagger-ui.html
 http://localhost:2020/h2-console/
 ````
 
-# Run test
+## Run test
 - unit test 
 ```
 mvn clean test
@@ -77,3 +77,19 @@ mvn clean test
 mvn clean verify
 ```
 
+## Limitations
+### Large log file 
+As we are posting our payload using post method we have a limitaiton of 
+max 4 GB file size.
+ 
+### Serial processing 
+On this project, we are processing log file line by line and serially. For large file 
+with many processors it could be an issue.  
+
+### Data model
+Data model is not optimized for hero names and items. 
+We are storing redundant name and item each table instead of creating 
+separate table for them and put reference. 
+
+### No track of log file
+You can upload same log file over and over. System will create new match for them.   

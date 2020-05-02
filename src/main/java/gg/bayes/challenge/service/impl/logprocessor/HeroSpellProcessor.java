@@ -23,7 +23,7 @@ public class HeroSpellProcessor implements LogProcessor {
 
     @Getter
     private final List<HeroSpell> heroSpellList = new ArrayList<>();
-    protected static final Pattern pattern = Pattern.compile("\\[(.*)]\\s+npc_dota_hero_(.*)\\s+casts\\s+ability\\s+(.*)\\s\\(.*\\)\\s+on\\s+(.*)");
+    protected static final Pattern pattern = Pattern.compile("\\[(.*)]\\snpc_dota_hero_(.*)\\scasts\\sability\\s(.*)\\s\\(.*\\)\\son\\s(.*)");
     private static final int TIME_GROUP = 1;
     private static final int HERO_GROUP = 2;
     private static final int SPELL_GROUP = 3;

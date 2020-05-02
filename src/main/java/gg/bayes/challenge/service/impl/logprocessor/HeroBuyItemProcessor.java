@@ -25,7 +25,7 @@ public class HeroBuyItemProcessor implements LogProcessor {
 
     @Getter
     private final List<HeroBuyItem> heroBuyItemList = new ArrayList<>();
-    private static final Pattern pattern = Pattern.compile("\\[(.*)]\\s+npc_dota_hero_(.*)\\s+buys\\s+item\\s+item_(.*)");
+    private static final Pattern pattern = Pattern.compile("\\[(.*)]\\snpc_dota_hero_(.*)\\sbuys\\sitem\\sitem_(.*)");
     private static final int TIME_GROUP = 1;
     private static final int HERO_GROUP = 2;
     private static final int ITEM_GROUP = 3;

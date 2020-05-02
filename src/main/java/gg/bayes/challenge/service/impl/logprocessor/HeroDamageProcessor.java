@@ -23,7 +23,7 @@ public class HeroDamageProcessor implements LogProcessor {
 
     @Getter
     private final List<HeroDamage> heroDamageList = new ArrayList<>();
-    protected static final Pattern pattern = Pattern.compile("\\[(.*)]\\s+npc_dota_hero_(.*)\\s+hits\\s+npc_dota_hero_(.*)\\s+with\\s+(.*)\\s+for\\s+(.*)\\s+damage");
+    protected static final Pattern pattern = Pattern.compile("\\[(.*)]\\snpc_dota_hero_(.*)\\shits\\snpc_dota_hero_(.*)\\swith\\s(.*)\\sfor\\s(.*)\\sdamage");
     private static final int TIME_GROUP = 1;
     private static final int HERO_GROUP = 2;
     private static final int HERO_TARGET_GROUP = 3;
