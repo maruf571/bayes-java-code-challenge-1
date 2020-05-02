@@ -82,10 +82,6 @@ mvn clean verify
 As we are posting our payload using post method we have a limitaiton of 
 max 4 GB file size.
  
-### Serial processing 
-On this project, we are processing log file line by line and serially. For large file 
-with many processors it could be an issue.  
-
 ### Data model
 Data model is not optimized for hero names and items. 
 We are storing redundant name and item each table instead of creating 
@@ -93,3 +89,12 @@ separate table for them and put reference.
 
 ### No track of log file
 You can upload same log file over and over. System will create new match for them.   
+
+### Serial processing 
+On this project, we are processing log file line by line and serially. For large file 
+with many processors it could be an issue.  
+
+### Log message change
+If log is changed, regex must be change accordingly,  
+otherwise this system will not work, even for adding a single white space. 
+
