@@ -13,14 +13,15 @@ log file, create necessary data from log and expose them in a rest api call.
 
 
 ##  Design Decisions 
-Based on the task description, I have found the pattern on the log file
-and created following processors to process specific data. 
-- HeroBuyItemProcessor
-- HeroDamageProcessor
-- HeroKillProcessor
-- HeroSpellProcessor
+- Based on the task description, I have found the pattern on the log file
+- created following processors to process specific data. 
+    - HeroBuyItemProcessor
+    - HeroDamageProcessor
+    - HeroKillProcessor
+    - HeroSpellProcessor
+- LogProcessManager manage processors     
 
-### How to add new data from log (if we want to add in future) 
+### How to add new data (if we want to add in future) 
 - create a new processor ex. FutureProcessor
 - add FutureProcessor on the log processor list 
 
@@ -32,6 +33,7 @@ and created following processors to process specific data.
 - MatchValidation: class to validate service input those need database to validate.
 - LogProcessorManager: main interface to process log.  
 - MatchControllerIT: integration test 
+- application-it.yml: 'it' profile to run integration test.
 
 ## New dependency 
 - added maven-surefire-plugin to run unit test and integration test separately.
@@ -44,7 +46,7 @@ and created following processors to process specific data.
 ```
 
 
-## Dev environment
+## Run dev env
 - run server
 ```
 mvn clean spring-boot:run 
