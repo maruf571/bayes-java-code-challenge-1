@@ -54,18 +54,18 @@ mvn clean spring-boot:run
 
 - upload log file(as binary data) from the root of the project
 ```
-curl -H "Content-Type: text/plain" --data-binary @data/combatlog_1.log.txt  http://localhost:2020/api/match
-curl -H "Content-Type: text/plain" --data-binary @data/combatlog_2.log.txt  http://localhost:2020/api/match
+curl -H "Content-Type: text/plain" --data-binary @data/combatlog_1.log.txt  http://localhost:8080/api/match
+curl -H "Content-Type: text/plain" --data-binary @data/combatlog_2.log.txt  http://localhost:8080/api/match
 ```
 
 - browse api doc
 ```
-http://localhost:2020/swagger-ui.html
+http://localhost:8080/swagger-ui.html
 ```
 
 - h2 console 
 ````
-http://localhost:2020/h2-console/
+http://localhost:8080/h2-console/
 ````
 
 ## Run test

@@ -1,6 +1,6 @@
 server:
   error.whitelabel.enabled: false
-  port: ${SERVER_PORT:2020}
+  port: ${SERVER_PORT:8080}
 
 spring:
   jpa:
